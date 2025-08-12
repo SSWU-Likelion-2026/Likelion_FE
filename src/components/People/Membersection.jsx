@@ -6,7 +6,7 @@ const MemberSection = ({ members }) => {
     <>
       {members.map((member, idx) => (
         <div className="member-card" key={idx}>
-          <img src={member.img ? member.img : lionImg} alt="lion" />
+          <img src={lionImg} alt="lion" />
           <div className="text-box">
             <div className="line-1">
               <p className="name">{member.name}</p>

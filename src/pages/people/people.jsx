@@ -1,33 +1,30 @@
 import React, { useState } from 'react';
 import MemberSection from '../../components/People/Membersection';
 import useWindowSize from '../../components/Section/useWindowSize';
-import Human01 from '../../assets/img/hackathon/human01.png'
-import Human02 from '../../assets/img/hackathon/human02.jpeg'
-import Human03 from '../../assets/img/hackathon/human03.jpg'
 
 const generations = ['13TH', '12TH', '11TH', '10TH', '9TH'];
 
 const memberData = {
   '13TH': {
     '대표단': [
-      { name: '조수빈', role: '대표', img: Human01, major: '컴퓨터공학과 23학번' },
-      { name: '정새영', role: '부대표', img: '', major: '미디어커뮤니케이션학과 22학번' }
+      { name: '조수빈', role: '대표', major: '컴퓨터공학과 23학번' },
+      { name: '정새영', role: '부대표', major: '미디어커뮤니케이션학과 22학번' }
     ],
     '기획/디자인': [
-      { name: '정다은', role: '파트장', img: '', major: '서비스디자인공학과 22학번' },
-      { name: '이정원', role: '', img: '', major: '컴퓨터공학과 23학번' }
+      { name: '정다은', role: '파트장', major: '서비스디자인공학과 22학번' },
+      { name: '이정원', role: '', major: '컴퓨터공학과 23학번' }
     ],
     '프론트엔드': [
-      { name: '정새영', role: '파트장', img: '', major: '미디어커뮤니케이션학과 22학번' },
-      { name: '강신영', role: '', img: '', major: 'AI융합학부 22학번' },
-      { name: '이현진', role: '', img: '', major: 'AI융합학부 22학번' },
-      { name: '최수진', role: '', img: '', major: '컴퓨터공학과 23학번' }
+      { name: '정새영', role: '파트장', major: '미디어커뮤니케이션학과 22학번' },
+      { name: '강신영', role: '', major: 'AI융합학부 22학번' },
+      { name: '이현진', role: '', major: 'AI융합학부 22학번' },
+      { name: '최수진', role: '', major: '컴퓨터공학과 23학번' }
     ],
     '백엔드': [
-      { name: '서지우', role: '파트장', img: Human02, major: 'AI융합학부 22학번' },
-      { name: '강민정', role: '', img: '', major: '컴퓨터공학과 22학번' },
-      { name: '김나영', role: '', img: Human03, major: 'AI융합학부 22학번' },
-      { name: '조수빈', role: '', img: '', major: '컴퓨터공학과 23학번' }
+      { name: '서지우', role: '파트장', major: 'AI융합학부 22학번' },
+      { name: '강민정', role: '', major: '컴퓨터공학과 22학번' },
+      { name: '김나영', role: '', major: 'AI융합학부 22학번' },
+      { name: '조수빈', role: '', major: '컴퓨터공학과 23학번' }
     ]
   }
 };
