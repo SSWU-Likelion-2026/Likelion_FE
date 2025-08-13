@@ -97,7 +97,7 @@ const Hackathon = () => {
                             {section.title === '아이디어톤'
                                 ? ideaProjects.map((project, j) => (
                                     <div className="content" key={j}>
-                                        <img src={project.img ? project.img : Thum} alt="" onClick={() => onDetail(j)} />
+                                        <img src={project.img ? project.img : Thum} alt="" onClick={() => onDetail(project.id)} />
                                         <div>
                                             <p className='title'>{project.title}</p>
                                             {width < 1000 ? (
@@ -129,7 +129,7 @@ const Hackathon = () => {
                                                     <p>참여자</p>
                                                 </>
                                             ) : (
-                                                <Link to={`/hackathon/${project.id}`}>
+                                                <Link to={`/hackathon/${j}`}>
                                                     <img src={Detail} alt="상세보기" />
                                                 </Link>
                                             )}
