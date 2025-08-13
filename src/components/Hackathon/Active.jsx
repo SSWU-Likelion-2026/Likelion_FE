@@ -65,7 +65,7 @@ const monthMap = {
 }
 
 const Active = () => {
-    const [now, setNow] = useState('Feb') // 기본값 'Feb' = 1월
+    const [now, setNow] = useState('Jen') // 기본값 'Feb' = 1월
     const { width } = useWindowSize()
 
     const mappedMonth = monthMap[now] || ''
