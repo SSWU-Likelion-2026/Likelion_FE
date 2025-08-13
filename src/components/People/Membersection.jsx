@@ -2,11 +2,12 @@ import React from 'react';
 import lionImg from '../../assets/img/people/lion.png';
 
 const MemberSection = ({ members }) => {
+
   return (
     <>
       {members.map((member, idx) => (
         <div className="member-card" key={idx}>
-          <img src={lionImg} alt="lion" />
+          <img src={member.img} alt="lion" />
           <div className="text-box">
             <div className="line-1">
               <p className="name">{member.name}</p>

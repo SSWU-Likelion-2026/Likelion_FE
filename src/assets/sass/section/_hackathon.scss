@@ -98,6 +98,12 @@
                     width: 380px;
                     height: 248px;
                     border-radius: 12px;
+                    overflow: hidden;
+
+                    >img {
+                        height: 191px;
+                        object-fit: cover;
+                    }
 
                     div {
                         height: 58px;
