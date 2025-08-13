@@ -129,7 +129,7 @@ const Hackathon = () => {
                                                     <p>참여자</p>
                                                 </>
                                             ) : (
-                                                <Link to={`/hackathon/${j}`}>
+                                                <Link to={`/hackathon/${project.id}`}>
                                                     <img src={Detail} alt="상세보기" />
                                                 </Link>
                                             )}
