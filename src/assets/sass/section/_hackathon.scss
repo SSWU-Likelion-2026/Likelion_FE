@@ -91,7 +91,22 @@
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 gap: 20px;
+                padding-top: 2px;
                 padding-bottom: 10px;
+
+                &::-webkit-scrollbar {
+                    display: block;
+                    height: 4px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: var(--pur03);
+                    border-radius: 4px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
 
                 .content {
                     flex: 0 0 auto;
