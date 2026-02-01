@@ -8,7 +8,7 @@ const Hac_Header = ({ setNow }) => {
     const [activeMonth, setActiveMonth] = useState('Feb')
     const [human, setHuman] = useState('PM/DE')
     const [title, setTitle] = useState('Hackathon')
-    const rounds = ['13TH', '12TH', '11TH', '10TH', '9TH']
+    const rounds = [ '14TH', '13TH']
     const months = ['Jen', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const kind = ['PM/DE', 'FE', 'BE']
     const { width } = useWindowSize();

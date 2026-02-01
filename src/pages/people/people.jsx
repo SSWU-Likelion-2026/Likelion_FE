@@ -22,7 +22,7 @@ import Front04_14TH from '../../assets/img/people/14TH/front04.jpeg'
 import Back01_14TH from '../../assets/img/people/14TH/back01.jpg'
 import Back02_14TH from '../../assets/img/people/14TH/back02.png'
 
-const generations = ['14TH', '13TH', '12TH', '11TH', '10TH'];
+const generations = ['14TH', '13TH'];
 
 const memberData = {
   '14TH': {
