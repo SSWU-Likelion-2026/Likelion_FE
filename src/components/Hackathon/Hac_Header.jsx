@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../Section/useWindowSize'
 import { useParams } from 'react-router-dom'
 
-const Hac_Header = ({ setNow }) => {
+const Hac_Header = ({ setNow, setTh }) => {
     const params = useParams()
     const [click, setClick] = useState('13TH')
     const [activeMonth, setActiveMonth] = useState('Feb')
@@ -26,6 +26,13 @@ const Hac_Header = ({ setNow }) => {
         }
     }, [activeMonth])
 
+    const handleRoundClick = (round) => {
+        setClick(round);
+        if (setTh){
+            setTh(round);
+        }
+    };
+
     return (
         <div className="header">
             {width > 393 ? (<h1>{title}</h1>) : (<></>)}
@@ -33,7 +40,7 @@ const Hac_Header = ({ setNow }) => {
                 {rounds.map((round) => (
                     <button
                         key={round}
-                        onClick={() => setClick(round)}
+                        onClick={() => handleRoundClick(round)}
                         className={click === round ? 'click' : ''}
                     >
                         {round}

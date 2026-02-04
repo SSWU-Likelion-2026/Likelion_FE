@@ -7,14 +7,15 @@ import Act02 from '../../assets/img/hackathon/activites02.png'
 import Act03 from '../../assets/img/hackathon/activites03.png'
 import Act04 from '../../assets/img/hackathon/activites04.png'
 import Act05 from '../../assets/img/hackathon/activites05.png'
-
+import Act06 from '../../assets/img/hackathon/activites06.jpg'
 import Act07 from '../../assets/img/hackathon/activites07.jpeg'
 import Act08 from '../../assets/img/hackathon/activites08.jpeg'
-import Act11 from '../../assets/img/hackathon/activites11.jpeg'
-import Act12 from '../../assets/img/hackathon/activites12.jpeg'
+import Act11 from '../../assets/img/hackathon/activites11.jpg'
+import Act12 from '../../assets/img/hackathon/activites12.jpg'
 
 const activityData = [
     {
+        th: '13TH',
         month: '1월',
         title: '운영진 스터디 - 회식',
         date: '2025년 1월',
@@ -22,6 +23,7 @@ const activityData = [
         img: Act01,
     },
     {
+        th: '13TH',
         month: '2월',
         title: '2025 TRENDITHON(운영진 해커톤)',
         date: '2025년 2월 26일 수요일',
@@ -30,6 +32,7 @@ const activityData = [
         img: Act02,
     },
     {
+        th: '13TH',
         month: '3월',
         title: '멋쟁이사자처럼 성신여대 13기 OT',
         date: '2025년 03월 13일 목요일',
@@ -37,6 +40,7 @@ const activityData = [
         img: Act03,
     },
     {
+        th: '13TH',
         month: '4월',
         title: '운트워킹',
         date: '2025년 4월 5일 토요일',
@@ -46,6 +50,7 @@ const activityData = [
         img: Act04,
     },
     {
+        th: '13TH',
         month: '5월',
         title: '아이디어톤 2차예선',
         date: '2025년 5월 25일 일요일',
@@ -53,11 +58,12 @@ const activityData = [
         img: Act05,
     },
     {
+        th: '13TH',
         month: '6월',
         title: '13기 성신 멋사 MT',
         date: '2025년 5월 31일 일요일~ 2025년 6월 1일 월요일',
         description: '성신 멋사의 네트워킹을 위한 MT가 난향원에서 진행되었습니다.',
-        // img: Act06,
+        img: Act06,
     },
     // {
     //     month: '7월',
@@ -67,12 +73,14 @@ const activityData = [
     //     // img: Act07,
     // },
     {
+        th: '13TH',
         month: '7월',
         title: '여기톤',
         date: '2025년 7월 11일 금요일~ 2025년 7월 12일 토요일',
         description: '무박 2일간 이화여자대학교, 숙명여자대학교, 성신여자대학교, 동덕여자대학교, 덕성여자대학교, 서울여자대학교 총 서울권 6개 여자대학교가 참여한 <2025 여기톤 : HER+THON>이 성공적으로 진행되었습니다.',
         img: Act07,
     },{
+        th: '13TH',
         month: '8월',
         title: '중앙 해커톤',
         date: '2025년 8월 25일 월요일~ 2025년 8월 26일 화요일',
@@ -80,6 +88,7 @@ const activityData = [
         img: Act08,
     },
     {
+        th: '13TH',
         month: '11월',
         title: '4호선톤',
         date: '2025년 11월 토요일',
@@ -87,6 +96,7 @@ const activityData = [
         img: Act11,
     },
     {
+        th: '13TH',
         month: '12월',
         title: '성신 멋사 13기 수료식 및 데모데이 / 14기  취임식',
         date: '2025년 12월 월요일',
@@ -111,15 +121,16 @@ const monthMap = {
 }
 
 const Active = () => {
+    const [th, setTh] = useState('13TH')
     const [now, setNow] = useState('Jen') // 기본값 'Feb' = 1월
     const { width } = useWindowSize()
 
     const mappedMonth = monthMap[now] || ''
-    const selectedData = activityData.find(item => item.month === mappedMonth)
+    const selectedData = activityData.find(item => item.month === mappedMonth && item.th === th)
 
     return (
         <div className={`Active_wrap Hac_Detail_wrap Hackathon_wrap ${width > 1000 ? 'container_w' : 'container_m'}`}>
-            <Hac_Header setNow={setNow} />
+            <Hac_Header setNow={setNow} setTh={setTh} />
             {width > 1000 ? (
                 <div className="main">
                     <img src={selectedData?.img || ThumBig} alt={selectedData?.title || '기본 이미지'} />

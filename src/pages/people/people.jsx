@@ -75,7 +75,7 @@ const memberData = {
 };
 
 const PeoplePage = () => {
-  const [activeGen, setActiveGen] = useState('13TH');
+  const [activeGen, setActiveGen] = useState('14TH');
   const { width } = useWindowSize();
 
   return (
