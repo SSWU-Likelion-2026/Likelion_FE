@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../Section/useWindowSize'
 import { useParams } from 'react-router-dom'
 
-const Hac_Header = ({ setNow }) => {
+const Hac_Header = ({ setNow, setTh }) => {
     const params = useParams()
     const [click, setClick] = useState('13TH')
     const [activeMonth, setActiveMonth] = useState('Feb')
     const [human, setHuman] = useState('PM/DE')
     const [title, setTitle] = useState('Hackathon')
-    const rounds = ['13TH', '12TH', '11TH', '10TH', '9TH']
+    const rounds = [ '14TH', '13TH']
     const months = ['Jen', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const kind = ['PM/DE', 'FE', 'BE']
     const { width } = useWindowSize();
@@ -26,6 +26,13 @@ const Hac_Header = ({ setNow }) => {
         }
     }, [activeMonth])
 
+    const handleRoundClick = (round) => {
+        setClick(round);
+        if (setTh){
+            setTh(round);
+        }
+    };
+
     return (
         <div className="header">
             {width > 393 ? (<h1>{title}</h1>) : (<></>)}
@@ -33,7 +40,7 @@ const Hac_Header = ({ setNow }) => {
                 {rounds.map((round) => (
                     <button
                         key={round}
-                        onClick={() => setClick(round)}
+                        onClick={() => handleRoundClick(round)}
                         className={click === round ? 'click' : ''}
                     >
                         {round}

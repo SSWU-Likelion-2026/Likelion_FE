@@ -24,7 +24,7 @@ import Back02_14TH from '../../assets/img/people/14TH/back02.png'
 import Back03_14TH from '../../assets/img/people/14TH/back03.jpg'
 import Pm01_14TH from '../../assets/img/people/14TH/pm_01.jpeg'
 
-const generations = ['14TH', '13TH', '12TH', '11TH', '10TH'];
+const generations = ['14TH', '13TH'];
 
 const memberData = {
   '14TH': {
@@ -75,7 +75,7 @@ const memberData = {
 };
 
 const PeoplePage = () => {
-  const [activeGen, setActiveGen] = useState('13TH');
+  const [activeGen, setActiveGen] = useState('14TH');
   const { width } = useWindowSize();
 
   return (
