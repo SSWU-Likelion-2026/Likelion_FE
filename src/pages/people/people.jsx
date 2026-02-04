@@ -21,6 +21,8 @@ import Front03_14TH from '../../assets/img/people/14TH/front03.jpeg'
 import Front04_14TH from '../../assets/img/people/14TH/front04.jpeg'
 import Back01_14TH from '../../assets/img/people/14TH/back01.jpg'
 import Back02_14TH from '../../assets/img/people/14TH/back02.png'
+import Back03_14TH from '../../assets/img/people/14TH/back03.jpg'
+import Pm01_14TH from '../../assets/img/people/14TH/pm_01.jpeg'
 
 const generations = ['14TH', '13TH'];
 
@@ -31,7 +33,7 @@ const memberData = {
       { img: Back01_14TH, name: '백수진', role: '부대표', major: '컴퓨터공학과 24학번' }
     ],
     '기획/디자인': [
-      // { img: , name: '이정원', role: '파트장', major: '컴퓨터공학과' },
+      { img: Pm01_14TH, name: '이정원', role: '파트장', major: '컴퓨터공학과 23학번' },
       // { img: , name: '정다빈', role: '', major: '서비스디자인공학과 24학번' }
     ],
     '프론트엔드': [
@@ -43,7 +45,7 @@ const memberData = {
     '백엔드': [
       { img: Back01_14TH, name: '백수진', role: '부대표', major: '컴퓨터공학과 24학번' },
       { img: Back02_14TH, name: '김도윤', role: '파트장', major: 'AI융합학부 24학번' },
-      // { img: , name: '이현경', role: '', major: '컴퓨터공학과 24학번' },
+      { img: Back03_14TH, name: '이현경', role: '', major: '컴퓨터공학과 24학번' },
       // { img: , name: '손정민', role: '', major: '컴퓨터공학과 24학번' },
     ]
   },
