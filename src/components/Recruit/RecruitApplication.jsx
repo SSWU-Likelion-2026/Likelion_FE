@@ -27,8 +27,9 @@ const RecruitApplication = () => {
 
     useEffect(() => {
         const fetchQuestionsAndInitForm = async () => {
+            console.log("현재 파트값:", selectedPart);
             try {
-                const res = await axios.get(`https://sswulion.shop/api/question`, {
+                const res = await axios.get(`https://api.sswulikelion.com/api/question`, {
                     params: {
                         part: selectedPart,
                     },
@@ -36,6 +37,8 @@ const RecruitApplication = () => {
                         'Accept': 'application/json',
                     },
                 });
+
+                console.log("서버 응답 데이터:", res.data);
 
                 const fetchedQuestions = res.data;
                 setQuestions(fetchedQuestions);
@@ -96,7 +99,7 @@ const RecruitApplication = () => {
         };
 
         try {
-            const response = await axios.post('https://sswulion.shop/api/admissions', payload, {
+            const response = await axios.post('https://api.sswulikelion.com/api/admissions', payload, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
