@@ -24,7 +24,7 @@ const Recruit = () => {
                 <div className="div" id='ing' onClick={goToApplyPage}>
                     <img src={apply_img} className='apply_img' />
                     <div className="info_div">
-                        <p className="info_title">13기 아기사자 - 모집 중</p>
+                        <p className="info_title">14기 아기사자 - 모집 중</p>
                         <img src={next} className="next" />
                     </div>
                 </div>

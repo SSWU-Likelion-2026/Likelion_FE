@@ -30,7 +30,7 @@ const RecruitTop = ({ isResultPage = false }) => {
                 <div className="recruit_title">Recruit</div >
                 <div className="type_div">
                     <div className={isResultPage ? 'no_choice_btn' : 'choice_btn'} onClick={goToApplyPage}>지원하기</div>
-                    <div className={isResultPage ? 'choice_btn' : 'no_choice_btn'} onClick={goToResultPage}>결과 조회</div>
+                    <div className={isResultPage ? 'choice_btn' : 'no_choice_btn'} onClick={goToResultPage} >결과 조회</div>
                 </div>
             </div >
         )}
