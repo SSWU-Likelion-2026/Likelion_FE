@@ -28,7 +28,7 @@ const RecruitApplication = () => {
     useEffect(() => {
         const fetchQuestionsAndInitForm = async () => {
             try {
-                const res = await axios.get(`https://sswulion.shop/api/question`, {
+                const res = await axios.get(`https://api.sswulikelion.com/api/question`, {
                     params: {
                         part: selectedPart,
                     },
@@ -96,7 +96,7 @@ const RecruitApplication = () => {
         };
 
         try {
-            const response = await axios.post('https://sswulion.shop/api/admissions', payload, {
+            const response = await axios.post('https://api.sswulikelion.com/api/admissions', payload, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
