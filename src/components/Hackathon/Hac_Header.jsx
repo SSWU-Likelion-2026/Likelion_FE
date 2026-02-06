@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom'
 
 const Hac_Header = ({ setNow, setTh }) => {
     const params = useParams()
-    const [click, setClick] = useState('13TH')
+    const [click, setClick] = useState('14TH')
     const [activeMonth, setActiveMonth] = useState('Feb')
     const [human, setHuman] = useState('PM/DE')
     const [title, setTitle] = useState('Hackathon')
-    const rounds = [ '14TH', '13TH']
+    const rounds = [ '14TH', '13TH'] 
     const months = ['Jen', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const kind = ['PM/DE', 'FE', 'BE']
     const { width } = useWindowSize();

@@ -22,6 +22,7 @@ import Front04_14TH from '../../assets/img/people/14TH/front04.jpeg'
 import Back01_14TH from '../../assets/img/people/14TH/back01.jpg'
 import Back02_14TH from '../../assets/img/people/14TH/back02.png'
 import Back03_14TH from '../../assets/img/people/14TH/back03.jpg'
+import Back04_14TH from '../../assets/img/people/14TH/back04.png'
 import Pm01_14TH from '../../assets/img/people/14TH/pm_01.jpeg'
 
 const generations = ['14TH', '13TH'];
@@ -46,7 +47,7 @@ const memberData = {
       { img: Back01_14TH, name: '백수진', role: '부대표', major: '컴퓨터공학과 24학번' },
       { img: Back02_14TH, name: '김도윤', role: '파트장', major: 'AI융합학부 24학번' },
       { img: Back03_14TH, name: '이현경', role: '', major: '컴퓨터공학과 24학번' },
-      // { img: , name: '손정민', role: '', major: '컴퓨터공학과 24학번' },
+      { img: Back04_14TH, name: '손정민', role: '', major: '컴퓨터공학과 24학번' },
     ]
   },
 
