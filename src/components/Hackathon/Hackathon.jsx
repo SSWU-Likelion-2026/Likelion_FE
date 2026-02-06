@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Hac_Header from './Hac_Header'
 import useWindowSize from '../Section/useWindowSize'
 
-import { ideaProjects, hereProjects } from '../../data/HackathonProjects'
+import { ideaProjects, hereProjects, centerProjects } from '../../data/HackathonProjects'
 
 const Hackathon = () => {
   const { width } = useWindowSize()
@@ -14,14 +14,7 @@ const Hackathon = () => {
   const sections = [
   { title: '아이디어톤', data: ideaProjects },
   { title: '여기톤', data: hereProjects },
-  { title: '중앙톤', data: Array.from({ length: 6 }).map((_, i) => ({
-      id: `center-temp-${i}`,
-      title: '서비스명',
-      description: '서비스 설명',
-      img: '',
-      members: { PM: '-', DE: '-', FE: ['-'], BE: ['-'] }
-    }))
-  },
+  { title: '중앙톤', data: centerProjects},
 ]
 
 
