@@ -23,20 +23,31 @@ const Hac_Detail = () => {
     )
   }
 
+  const hasStacks = !!project.stacks
+
   return (
     <div className={`Hac_Detail_wrap Hackathon_wrap ${width > 1000 ? 'container_w' : 'container_m'}`}>
       <Hac_Header />
+
       {width > 1000 ? (
         <div className="main">
           <img src={project.img || ThumBig} alt="" />
           <div className="text_box">
             <h2>{project.title}</h2>
             <p>{project.description}</p>
+
             <div className="info">
               <p>PM: {project.members.PM}</p>
               <p>DE: {project.members.DE}</p>
               <p>FE: {project.members.FE.join(', ')}</p>
               <p>BE: {project.members.BE.join(', ')}</p>
+
+              {hasStacks && (
+                <>
+                  <p>프론트 스택: {project.stacks.frontend}</p>
+                  <p>백 스택: {project.stacks.backend}</p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -45,12 +56,44 @@ const Hac_Detail = () => {
           <h2>{project.title}</h2>
           <div className="detail">
             <img src={project.img || ThumBig} alt="" />
+
             <div className="text_box">
-              <div className="text"><p className="left">서비스 소개</p><p>{project.description}</p></div>
-              <div className="text"><p className="left">PM</p><p>{project.members.PM}</p></div>
-              <div className="text"><p className="left">DE</p><p>{project.members.DE}</p></div>
-              <div className="text"><p className="left">FE</p><p>{project.members.FE.join(', ')}</p></div>
-              <div className="text"><p className="left">BE</p><p>{project.members.BE.join(', ')}</p></div>
+              <div className="text">
+                <p className="left">서비스 소개</p>
+                <p>{project.description}</p>
+              </div>
+
+              <div className="text">
+                <p className="left">PM</p>
+                <p>{project.members.PM}</p>
+              </div>
+              <div className="text">
+                <p className="left">DE</p>
+                <p>{project.members.DE}</p>
+              </div>
+              <div className="text">
+                <p className="left">FE</p>
+                <p>{project.members.FE.join(', ')}</p>
+              </div>
+              <div className="text">
+                <p className="left">BE</p>
+                <p>{project.members.BE.join(', ')}</p>
+              </div>
+
+              {hasStacks && (
+                <>
+                  <div className="stack">
+                    <div className="text">
+                      <p className="left">프론트 스택</p>
+                      <p>{project.stacks.frontend}</p>
+                    </div>
+                    <div className="text">
+                      <p className="left">백 스택</p>
+                      <p>{project.stacks.backend}</p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
