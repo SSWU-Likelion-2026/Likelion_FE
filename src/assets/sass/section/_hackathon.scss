@@ -7,22 +7,6 @@
         flex-direction: column;
         align-items: center;
 
-        .tab_box {
-            order: 1;
-        }
-
-        h1 {
-            order: 2;
-        }
-
-        .month {
-            order: 3;
-        }
-
-        .retros {
-            order: 4;
-        }
-
         h1 {
             font-size: 30px;
             font-weight: 700;
@@ -39,7 +23,6 @@
             gap: 20px;
             width: 593px;
             margin-bottom: 20px;
-
 
             button {
                 width: 104px;
@@ -244,26 +227,12 @@
 
                             .title {
                                 font-size: 16px;
-                                font-weight: 600;
                             }
 
                             p {
                                 font-size: 10px;
-                                font-weight: 400;
                                 margin-bottom: 5px;
                             }
-
-                            .pro_detial {
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: 4px 10px;
-
-                                span {
-                                    font-size: 10px;
-                                    white-space: nowrap;
-                                }
-                            }
-
 
                             button {
                                 width: 24px;
@@ -340,9 +309,7 @@
 
             .text_box {
                 margin-bottom: 40px;
-                .stack{
-                    margin-top: 20px;
-                }
+
                 .text {
                     display: flex;
 
@@ -365,9 +332,9 @@
 
 .Active_wrap {
     .header {
-
+    
         .tab_box {
-            margin-bottom: 100px;
+            margin-bottom: 20px;
         }
 
         .month {
@@ -376,7 +343,6 @@
             overflow-x: auto;
             gap: 40px;
             padding: 8px 0;
-            margin-top: -20px;
             scrollbar-width: none;
             -ms-overflow-style: none;
 

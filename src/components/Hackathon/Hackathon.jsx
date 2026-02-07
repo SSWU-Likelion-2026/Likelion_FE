@@ -12,10 +12,10 @@ const Hackathon = () => {
   const navigation = useNavigate()
 
   const sections = [
-    { title: '아이디어톤', data: ideaProjects },
-    { title: '여기톤', data: hereProjects },
-    { title: '중앙톤', data: centerProjects },
-  ]
+  { title: '아이디어톤', data: ideaProjects },
+  { title: '여기톤', data: hereProjects },
+  { title: '중앙톤', data: centerProjects},
+]
 
 
   const onDetail = (id) => {
@@ -43,13 +43,12 @@ const Hackathon = () => {
                     {width < 1000 ? (
                       <>
                         <p>{project.description}</p>
-                        <p className="pro_detial">
-                          <span>PM: {project.members.PM}</span>
-                          <span>DE: {project.members.DE}</span>
-                          <span>FE: {project.members.FE.join(', ')}</span>
-                          <span>BE: {project.members.BE.join(', ')}</span>
+                        <p>
+                          PM: {project.members.PM}<br />
+                          DE: {project.members.DE}<br />
+                          FE: {project.members.FE.join(', ')}<br />
+                          BE: {project.members.BE.join(', ')}
                         </p>
-
                       </>
                     ) : (
                       <Link to={`/hackathon/${project.id}`}>
