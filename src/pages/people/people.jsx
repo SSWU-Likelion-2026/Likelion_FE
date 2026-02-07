@@ -22,7 +22,9 @@ import Front04_14TH from '../../assets/img/people/14TH/front04.jpeg'
 import Back01_14TH from '../../assets/img/people/14TH/back01.jpg'
 import Back02_14TH from '../../assets/img/people/14TH/back02.png'
 import Back03_14TH from '../../assets/img/people/14TH/back03.jpg'
-import Pm01_14TH from '../../assets/img/people/14TH/pm_01.jpeg'
+import Back04_14TH from '../../assets/img/people/14TH/back04.png'
+import Pm01_14TH from '../../assets/img/people/14TH/pm01.jpeg'
+import Pm02_14TH from '../../assets/img/people/14TH/pm02.jpg'
 
 const generations = ['14TH', '13TH', '12TH', '11TH', '10TH'];
 
@@ -34,7 +36,7 @@ const memberData = {
     ],
     '기획/디자인': [
       { img: Pm01_14TH, name: '이정원', role: '파트장', major: '컴퓨터공학과 23학번' },
-      // { img: , name: '정다빈', role: '', major: '서비스디자인공학과 24학번' }
+      { img: Pm02_14TH, name: '정다빈', role: '', major: '서비스디자인공학과 24학번' }
     ],
     '프론트엔드': [
       { img: Front01_14TH, name: '최수진', role: '대표', major: '컴퓨터공학과 23학번' },
