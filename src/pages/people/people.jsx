@@ -48,7 +48,7 @@ const memberData = {
       { img: Back01_14TH, name: '백수진', role: '부대표', major: '컴퓨터공학과 24학번' },
       { img: Back02_14TH, name: '김도윤', role: '파트장', major: 'AI융합학부 24학번' },
       { img: Back03_14TH, name: '이현경', role: '', major: '컴퓨터공학과 24학번' },
-      // { img: , name: '손정민', role: '', major: '컴퓨터공학과 24학번' },
+      { img: Back04_14TH, name: '손정민', role: '', major: '컴퓨터공학과 24학번' },
     ]
   },
 
