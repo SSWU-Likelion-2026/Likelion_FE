@@ -21,7 +21,7 @@ const Recruit = () => {
         <div className={`recruit_home_div ${width > 1000 ? '' : 'container_m'}`} id='m_back'>
             <RecruitTop />
             <div className="part_div">
-             <div className="div" id='ing' onClick={goToApplyPage}>
+                <div className="div" id='ing' onClick={goToApplyPage}>
                     <img src={apply_img} className='apply_img' />
                     <div className="info_div">
                         <p className="info_title">14기 아기사자 - 모집 중</p>
