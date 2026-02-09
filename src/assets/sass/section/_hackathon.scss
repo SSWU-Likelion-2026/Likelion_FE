@@ -227,11 +227,24 @@
 
                             .title {
                                 font-size: 16px;
+                                font-weight: 600;
                             }
 
                             p {
                                 font-size: 10px;
+                                font-weight: 400;
                                 margin-bottom: 5px;
+                            }
+
+                            .pro_detial {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 4px 10px;
+
+                                span {
+                                    font-size: 10px;
+                                    white-space: nowrap;
+                                }
                             }
 
                             button {
@@ -312,7 +325,7 @@
 
                 .text {
                     display: flex;
-
+                    
                     p {
                         font-size: 14px;
                         color: var(--white);
@@ -332,7 +345,7 @@
 
 .Active_wrap {
     .header {
-    
+
         .tab_box {
             margin-bottom: 20px;
         }
