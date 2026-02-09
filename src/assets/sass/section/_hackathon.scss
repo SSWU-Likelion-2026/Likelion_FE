@@ -19,8 +19,9 @@
 
         .tab_box {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             width: 593px;
+            gap: 20px;
             margin-bottom: 20px;
 
             button {
@@ -191,7 +192,7 @@
             }
 
             .retros {
-                width: 250px !important;
+               // width: 250px !important;
             }
         }
 
@@ -368,39 +369,6 @@
                     margin-bottom: 10px;
                 }
 
-            }
-        }
-    }
-}
-
-.Retorspection_wrap {
-    .main_m {
-        >div {
-            height: 100%;
-
-            padding: 23px 20px;
-            border: 2px solid #ADB4E2;
-
-            img {
-                height: 195px;
-            }
-
-            >div {
-                h2 {
-                    font-size: 18px;
-                    color: #ADB4E2;
-                    margin-bottom: 10px;
-                }
-
-                p {
-                    overflow-y: scroll;
-                    width: 100%;
-                    height: 150px;
-                    border-radius: 15px;
-                    background-color: var(--white);
-                    color: var(--black);
-                    padding: 15px;
-                }
             }
         }
     }
