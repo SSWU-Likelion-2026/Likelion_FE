@@ -1,5 +1,5 @@
 // 아이디어톤 이미지
-import Idea01 from '../assets/img/hackathon/idea01.jpg'
+import Idea01 from '../assets/img/hackathon/idea01_11.jpg'
 import Idea02 from '../assets/img/hackathon/idea02.png'
 import Idea03 from '../assets/img/hackathon/idea03.png'
 import Idea04 from '../assets/img/hackathon/idea04.png'
@@ -24,6 +24,8 @@ import center02 from '../assets/img/hackathon/center02.png'
 import center03 from '../assets/img/hackathon/center03.png'
 import center04 from '../assets/img/hackathon/center04.png'
 
+//14기 예비 이미지
+import Thum from '../assets/img/hackathon/thumbnail.png'
 
 export const ideaProjects = [
   {
@@ -257,6 +259,198 @@ export const centerProjects = [
       backend: 'Spring Boot',
     },
   }
+]
+
+// 14기 - 아이디어톤
+export const ideaProjects14 = [
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+]
+
+// 14기 - 여기톤
+export const hereProjects14 = [
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+]
+
+// 14기 - 중앙톤
+export const centerProjects14 = [
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    img: Thum,
+    members: {
+      PM: '',
+      DE: '',
+      FE: [],
+      BE: [],
+    },
+  },
 ]
 
 // 상세 페이지에서 전체에서 찾기 위한 합본
