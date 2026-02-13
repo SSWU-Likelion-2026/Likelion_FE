@@ -15,6 +15,7 @@ const RecruitInfo = () => {
       name,
       studentId,
       major,
+      password,
       contact,
       selectedPart: selectedPart?.value,
     }
@@ -31,9 +32,10 @@ const RecruitInfo = () => {
     const [studentId, setStudentId] = useState('');
     const [major, setMajor] = useState('');
     const [contact, setContact] = useState('');
+    const [password, setPassword] = useState('');
     const [selectedPart, setSelectedPart] = useState(null);
 
-    const isFormComplete = name && studentId && major && contact && selectedPart?.value;
+    const isFormComplete = name && studentId && major && contact && password && selectedPart?.value;
 
     const customStyles = {
         control: (provided) => ({
@@ -92,6 +94,17 @@ const RecruitInfo = () => {
                         <input type="text" value={contact}
                             onChange={(e) => setContact(e.target.value)}
                             className="input_text" placeholder='010-0000-0000' />
+                    </div>
+                    <div>
+                        <div className="info_title">비밀번호 (4~6자리 숫자)</div>
+                        <input 
+                            type="password" 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="input_text" 
+                            placeholder='비밀번호를 입력해주세요' 
+                            maxLength={6} // 최대 6자리 제한
+                        />
                     </div>
                     <div>
                         <div className="info_title">지원파트</div>
