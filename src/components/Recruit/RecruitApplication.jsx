@@ -9,7 +9,7 @@ const RecruitApplication = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { width } = useWindowSize();
-    const { name, studentId, major, contact, selectedPart } = location.state || {};
+    const { name, studentId, major, contact,password, selectedPart } = location.state || {};
     const [questions, setQuestions] = useState([]);
     const textarea = useRef({});
     const maxLength = 500;
@@ -27,37 +27,46 @@ const RecruitApplication = () => {
 
     useEffect(() => {
         const fetchQuestionsAndInitForm = async () => {
+            console.log("현재 파트값:", selectedPart);
+            if (!selectedPart) {
+                alert("잘못된 접근입니다. 파트를 선택해주세요.");
+                navigate(-1);
+                return;
+            }
+
             try {
-                const res = await axios.get(`https://sswulion.shop/api/question`, {
-                    params: {
-                        part: selectedPart,
-                    },
-                    headers: {
-                        'Accept': 'application/json',
-                    },
+                const res = await axios.get(`https://api.sswulikelion.com/api/question`, {
+                    params: { part: selectedPart },
+                    headers: { 'Accept': 'application/json' },
                 });
 
-                const fetchedQuestions = res.data;
+                console.log("서버 응답 데이터:", res.data);
+
+                const fetchedQuestions = res.data.result || res.data;
                 setQuestions(fetchedQuestions);
 
                 const initForm = {};
-                fetchedQuestions.forEach((_, index) => {
-                    initForm[`content${index + 1}`] = '';
+                fetchedQuestions.forEach((q) => {
+                    initForm[q.questionId] = '';
                 });
                 setForm(initForm);
+
             } catch (err) {
                 console.error("질문 목록 불러오기 실패", err);
             }
         };
 
         fetchQuestionsAndInitForm();
-    }, [selectedPart]);
+    }, [selectedPart, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        // name은 이제 questionId (숫자)일 수 있으므로 대괄호 접근
         const trimmedValue = value.slice(0, maxLength);
+
         setForm(prev => ({ ...prev, [name]: trimmedValue }));
 
+        // 높이 자동 조절
         const ref = textarea.current[name];
         if (ref) {
             ref.style.height = 'auto';
@@ -65,74 +74,95 @@ const RecruitApplication = () => {
         }
     };
 
-    const renderTextarea = (name, title, limit = maxLength) => (
-        <div>
-            <div className="info_title">{title}</div>
-            <div className="textarea_div">
-                <textarea
-                    name={name}
-                    ref={el => textarea.current[name] = el}
-                    placeholder="내용을 작성해주세요"
-                    rows={1}
-                    value={form[name]}
-                    onChange={handleChange}
-                    maxLength={limit}
-                />
-                <div className="text_length">{form[name].length} / {limit}</div>
+    const renderTextarea = (question) => {
+        const key = question.questionId; // 질문 ID를 고유 키로 사용
+        return (
+            <div key={key} className="question_item">
+                <div className="info_title">
+                    {/* 질문 번호와 내용을 함께 표시 */}
+                    Q. {question.content || question.questionText}
+                </div>
+                <div className="textarea_div">
+                    <textarea
+                        name={key} // name을 questionId로 설정
+                        ref={el => textarea.current[key] = el}
+                        placeholder="내용을 작성해주세요"
+                        rows={1}
+                        value={form[key] || ''} // 값이 없으면 빈 문자열
+                        onChange={handleChange}
+                        maxLength={maxLength}
+                    />
+                    <div className="text_length">{(form[key] || '').length} / {maxLength}</div>
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
+
     const handleSubmit = async () => {
+        // 유효성 검사
+        if (!name || !studentId || !major || !contact) {
+            alert("기본 정보가 누락되었습니다. 다시 신청해주세요.");
+            return;
+        }
+
         const payload = {
             name: name,
-            field:  Number(studentId),
+            field: parseInt(studentId, 10), 
             department: major,
             phone_number: contact,
             part: selectedPart,
-            answers: questions.map((q, index) => ({
+            password: password || "1234", 
+            answers: questions.map((q) => ({
                 questionId: q.questionId,
-                answerText: form[`content${index + 1}`]
+                answerText: form[q.questionId] || "" 
             }))
         };
 
+        console.log("최종 전송 데이터:", payload); 
+
         try {
-            const response = await axios.post('https://sswulion.shop/api/admissions', payload, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+            const response = await axios.post('https://api.sswulikelion.com/api/admissions', payload, {
+                headers: { 'Content-Type': 'application/json' }
             });
 
-            if (response.status === 200) {
-                alert("제출 완료!");
-                if (width <= 1000) {
-                    navigate(-3);
-                } else {
-                    navigate(-2);
-                }
+            console.log("성공 응답:", response); // 응답 전체 확인
+
+            if (response.data.isSuccess || response.status === 200) { // 서버 응답 구조에 따라 조건 수정
+                alert("지원서가 성공적으로 제출되었습니다!");
+                if (width <= 1000) navigate(-3);
+                else navigate(-2);
             }
         } catch (error) {
-            if (error.response && error.response.status === 409) {
-                alert("이미 제출했습니다.");
+            console.error("제출 에러 상세:", error);
+            if (error.response) {
+                console.log("서버 에러 메시지:", error.response.data);
+                // 409 Conflict: 중복 제출
+                if (error.response.status === 409) {
+                    alert("이미 제출된 지원서입니다.");
+                } else if (error.response.status === 400) {
+                    alert(`입력 형식이 올바르지 않습니다.\n(${error.response.data.message})`);
+                } else {
+                    alert("서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+                }
             } else {
-                console.error("지원서 제출 오류", error);
-                alert("제출 중 오류가 발생했습니다.");
+                alert("네트워크 오류가 발생했습니다.");
             }
         } finally {
             setShowPopup(false);
         }
     };
 
-
     return (
         <div className={`recruit_application_div ${width > 1000 ? '' : 'container_m'}`} id='m_back'>
             <RecruitTop />
             <div className="application_div">
                 <div className="application_top">
-                    {questions.map((q, index) =>
-                        renderTextarea(`content${index + 1}`, `${index + 1}. ${q.questionText}`, 500)
-                    )}
+                    {/* 질문 리스트 렌더링 */}
+                    {questions.map((q) => renderTextarea(q))}
                 </div>
-                <div className="send" onClick={() => setShowPopup(true)}>{width <= 1000 ? '제출' : '제출하기'}</div>
+                <div className="send" onClick={() => setShowPopup(true)}>
+                    {width <= 1000 ? '제출' : '제출하기'}
+                </div>
             </div>
             {showPopup && (
                 <RecruitPopup
@@ -144,4 +174,4 @@ const RecruitApplication = () => {
     )
 }
 
-export default RecruitApplication
+export default RecruitApplication;
