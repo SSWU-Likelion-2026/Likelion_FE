@@ -135,21 +135,21 @@ const Active = () => {
                 <div className="main">
                     <img src={selectedData?.img || ThumBig} alt={selectedData?.title || '기본 이미지'} />
                     <div className="text_box">
-                        <h2>{selectedData?.title || '활동명'}</h2>
-                        <p>{selectedData?.date || '활동 날짜'}</p>
+                        <h2>{selectedData?.title || '아직 내용이 없습니다'}</h2>
+                        <p>{selectedData?.date}</p>
                         <div className="info">
-                            <p>{selectedData?.description || '활동 소개'}</p>
+                            <p>{selectedData?.description}</p>
                         </div>
                     </div>
                 </div>
             ) : (
                 <div className="main_m">
                     <div>
-                        <h2>{selectedData?.title || '활동명'}</h2>
+                        <h2>{selectedData?.title}</h2>
                         <div>
                             <img src={selectedData?.img || ThumBig} alt={selectedData?.title || '기본 이미지'} />
-                            <p>활동 날짜 | {selectedData?.date || '2025년 월 일'}</p>
-                            <p>활동 내용 | {selectedData?.description || '활동 소개가 없습니다.'}</p>
+                            <p>활동 날짜 | {selectedData?.date || '아직 내용이 없습니다'}</p>
+                            <p>활동 내용 | {selectedData?.description || '아직 내용이 없습니다'}</p>
                         </div>
                     </div>
                 </div>
