@@ -25,7 +25,7 @@ import center03 from '../assets/img/hackathon/center03.png'
 import center04 from '../assets/img/hackathon/center04.png'
 
 //14기 예비 이미지
-import Thum from '../assets/img/hackathon/thumbnail.png'
+import Thum from '../assets/img/hackathon/thumbnail01.png'
 
 export const ideaProjects = [
   {

@@ -11,7 +11,7 @@ const Hac_Header = ({ setNow, onRoundChange, onKindChange ,setTh }) => {
     const [human, setHuman] = useState('LEADER')
     const [title, setTitle] = useState('Hackathon')
     const rounds = ['14TH', '13TH']
-    const months = ['Jen', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const kind = ['LEADER','PM/DE', 'FE', 'BE']
     const { width } = useWindowSize()
 
