@@ -127,6 +127,17 @@ const RecruitApplication = () => {
             return;
         }
 
+        const isAllAnswered = questions.every(q => {
+            const answer = form[q.questionId];
+            return answer && answer.trim().length > 0;
+        });
+
+        if (!isAllAnswered) {
+            alert("아직 작성하지 않은 답변이 있습니다.\n모든 질문에 답변을 남겨주세요!");
+            setShowPopup(false); // 팝업 닫기
+            return; // 서버 전송 중단
+        }
+
         // 5. 데이터 전송 Payload 생성
         const payload = {
             name: name,
