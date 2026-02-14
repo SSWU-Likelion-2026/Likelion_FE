@@ -13,7 +13,7 @@ const Hac_Header = ({ setNow, onRoundChange, onKindChange, setTh }) => {
 
     const rounds = [ '14TH', '13TH']
 
-    const months = ['Jen', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const kind = ['LEADER','PM/DE', 'FE', 'BE']
     const { width } = useWindowSize()
 
@@ -44,11 +44,10 @@ const Hac_Header = ({ setNow, onRoundChange, onKindChange, setTh }) => {
                 {rounds.map((round) => (
                     <button
                         key={round}
-                        onClick={() => {
+                        onClick={() => {handleRoundClick(round)
                             setClick(round)
                             onRoundChange?.(round) 
                         }}
-                        onClick={() => handleRoundClick(round)}
                         className={click === round ? 'click' : ''}
                     >
                         {round}
