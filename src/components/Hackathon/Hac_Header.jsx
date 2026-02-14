@@ -42,12 +42,11 @@ const Hac_Header = ({ setNow, onRoundChange, onKindChange ,setTh }) => {
                 {rounds.map((round) => (
                     <button
                         key={round}
-                        onClick={() => {
+                        onClick={() => {handleRoundClick(round)
                             setClick(round)
                             onRoundChange?.(round) 
                             handleRoundClick(round)
                         }}
-                       
                         className={click === round ? 'click' : ''}
                     >
                         {round}
