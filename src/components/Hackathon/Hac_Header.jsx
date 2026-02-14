@@ -3,17 +3,15 @@ import useWindowSize from '../Section/useWindowSize'
 import { useParams } from 'react-router-dom'
 
 
-const Hac_Header = ({ setNow, onRoundChange, onKindChange, setTh }) => {
+const Hac_Header = ({ setNow, onRoundChange, onKindChange ,setTh }) => {
 
     const params = useParams()
     const [click, setClick] = useState('13TH')
     const [activeMonth, setActiveMonth] = useState('Feb')
     const [human, setHuman] = useState('LEADER')
     const [title, setTitle] = useState('Hackathon')
-
-    const rounds = [ '14TH', '13TH']
-
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    const rounds = ['14TH', '13TH']
+    const months = ['Jen', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const kind = ['LEADER','PM/DE', 'FE', 'BE']
     const { width } = useWindowSize()
 
@@ -47,6 +45,7 @@ const Hac_Header = ({ setNow, onRoundChange, onKindChange, setTh }) => {
                         onClick={() => {handleRoundClick(round)
                             setClick(round)
                             onRoundChange?.(round) 
+                            handleRoundClick(round)
                         }}
                         className={click === round ? 'click' : ''}
                     >

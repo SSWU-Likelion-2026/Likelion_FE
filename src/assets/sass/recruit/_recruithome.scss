@@ -1,5 +1,5 @@
 .recruit_home_div {
-    height: calc(100vh - 220px - 112px);
+    min-height: calc(100vh - 220px - 112px);
     width: 100%;
     display: flex;
     align-items: center;

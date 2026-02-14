@@ -1,9 +1,17 @@
 
 .Retorspection_wrap {
     .main{
-        >div{
+        .text_box{
+            .name{
+                font-size: 24px;
+            }
+            .role{
+                font-size: 20px;
+            }
+            
             >div{
                 p{
+                    font-size: 16px;
                     white-space: pre-wrap;}
             }
         }
