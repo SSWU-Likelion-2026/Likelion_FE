@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import RecruitTop from './RecruitTop'
 import { useState } from 'react';
@@ -9,18 +9,46 @@ const RecruitInfo = () => {
     const navigate = useNavigate();
     const { width } = useWindowSize();
 
-  const goToNextPage = () => {
-  navigate('/application', {
-    state: {
-      name,
-      studentId,
-      major,
-      password,
-      contact,
-      selectedPart: selectedPart?.value,
-    }
-  });
-};
+    const goToNextPage = () => {
+        const studentIdStr = String(studentId).trim();
+        const isStudentIdValid = /^[0-9]+$/.test(studentIdStr);
+
+        if (!isStudentIdValid) {
+            alert("학번은 숫자만 입력할 수 있습니다.\n(예: 20231234)");
+            return; 
+        }
+
+        // 2. 연락처 검사
+        const contactStr = String(contact).trim();
+        const contactRegex = /^010-\d{4}-\d{4}$/;
+
+        if (!contactRegex.test(contactStr)) {
+            alert("연락처 형식이 올바르지 않습니다.\n하이픈(-)을 포함한 010-0000-0000 형식으로 입력해주세요.");
+            return; 
+        }
+
+        // 3. 비밀번호 검사 (4~6자리 숫자)
+        const pwStr = String(password).trim();
+        const isPwLengthValid = pwStr.length >= 4 && pwStr.length <= 6;
+        const isPwNumberValid = /^[0-9]+$/.test(pwStr);
+        if (!isPwLengthValid || !isPwNumberValid) {
+            alert("비밀번호는 4~6자리 숫자로 입력해주세요.");
+            return; 
+        }
+
+        // 4. 검사 통과 시 페이지 이동
+        navigate('/application', {
+            state: {
+                name,
+                studentId: studentIdStr, 
+                major,
+                password: pwStr,         
+                contact,
+                selectedPart: selectedPart?.value,
+            }
+        });
+    };
+
 
     const part = [
         { value: '기획디자인', label: "기획/디자인" },
@@ -48,7 +76,6 @@ const RecruitInfo = () => {
             border: '2px solid #ADB4E2',
             background: '#FFF',
             boxShadow: 'none',
-            outline: 'none',
             '&:hover': {
                 border: '2px solid #ADB4E2',
             },
@@ -68,7 +95,7 @@ const RecruitInfo = () => {
 
     return (
         <div className={`recruit_info_div ${width > 1000 ? '' : 'container_m'}`} id='m_back'>
-            <RecruitTop/>
+            <RecruitTop />
             <div className="info_div">
                 <div className='info_top'>
                     <div>
@@ -97,12 +124,12 @@ const RecruitInfo = () => {
                     </div>
                     <div>
                         <div className="info_title">비밀번호 (4~6자리 숫자)</div>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="input_text" 
-                            placeholder='비밀번호를 입력해주세요' 
+                            className="input_text"
+                            placeholder='비밀번호를 입력해주세요'
                             maxLength={6} // 최대 6자리 제한
                         />
                     </div>
