@@ -1,0 +1,44 @@
+
+.Retorspection_wrap {
+    .main{
+        >div{
+            >div{
+                p{
+                    white-space: pre-wrap;}
+            }
+        }
+    }
+    .main_m, .retrospection_empty {
+        >div {
+            height: 100%;
+
+            padding: 23px 20px;
+            border: 2px solid #ADB4E2;
+
+            img {
+                height: 195px;
+                object-fit: cover;
+                
+            }
+
+            >div {
+                h2 {
+                    font-size: 18px;
+                    color: #ADB4E2;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    overflow-y: scroll;
+                    width: 100%;
+                    height: 150px;
+                    border-radius: 15px;
+                    background-color: var(--white);
+                    color: var(--black);
+                    white-space: pre-wrap;
+                    padding: 15px;
+                }
+            }
+        }
+    }
+}
