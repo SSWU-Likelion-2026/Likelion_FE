@@ -96,8 +96,8 @@ const Retrospection = () => {
                     <img src={view.thumb} alt="" />
                     <div className="text_box">
 
-                        {view.name ? <h2>{view.name}</h2> : null}
-                        {view.role ? <p>{view.role}</p> : null}
+                        {view.name ? <h2 className='name'>{view.name}</h2> : null}
+                        {view.role ? <p className='role'>{view.role}</p> : null}
 
                         <div className="info">
                             <p className="retrospection_text">{view.text}</p>

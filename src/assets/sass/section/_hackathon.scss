@@ -159,7 +159,7 @@
         .header {
             position: relative;
             // margin-bottom: 200px;
-            
+
             .tab_box {
                 position: absolute;
                 width: 331px;
@@ -203,7 +203,7 @@
             }
 
             .retros {
-               // width: 250px !important;
+                // width: 250px !important;
             }
         }
 
@@ -279,20 +279,23 @@
         align-items: center;
 
         img {
-            width: 70em;
+            width: 62.5em;
             margin-bottom: 30px;
+            height: 35.19em;
+            object-fit: cover;
+            object-position: center;
         }
 
         .text_box {
-            width: 70em;
+            width: 62.5em;
             text-align: left;
             color: var(--white);
-            font-weight: 700;
+            font-weight: bold;
 
             h2 {
                 border-left: 3px solid #6B69B0;
-                font-size: 50px;
-                padding-left: 20px;
+                font-size: 24px;
+                padding-left: 8px;
                 margin-bottom: 30px;
             }
 
@@ -301,7 +304,7 @@
             }
 
             p {
-                font-size: 30px;
+                font-size: 18px;
                 margin-bottom: 20px;
             }
         }
@@ -336,7 +339,7 @@
 
                 .text {
                     display: flex;
-                    
+
                     p {
                         font-size: 14px;
                         color: var(--white);
