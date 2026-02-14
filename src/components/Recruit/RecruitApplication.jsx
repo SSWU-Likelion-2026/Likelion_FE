@@ -9,7 +9,7 @@ const RecruitApplication = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { width } = useWindowSize();
-    const { name, studentId, major, contact,password, selectedPart } = location.state || {};
+    const { name, studentId, major, contact, password, selectedPart } = location.state || {};
     const [questions, setQuestions] = useState([]);
     const textarea = useRef({});
     const maxLength = 500;
@@ -99,26 +99,47 @@ const RecruitApplication = () => {
     };
 
     const handleSubmit = async () => {
-        // 유효성 검사
+        // 1. 기본 정보 누락 검사
         if (!name || !studentId || !major || !contact) {
             alert("기본 정보가 누락되었습니다. 다시 신청해주세요.");
             return;
         }
 
+        // 2. 학번 검사
+        const studentIdStr = String(studentId).trim();
+        if (!/^[0-9]+$/.test(studentIdStr)) {
+            alert("학번은 숫자만 입력할 수 있습니다.\n(예: 20231234)");
+            return;
+        }
+
+        // 3. 연락처 형식 검사 
+        const contactStr = contact ? String(contact).trim() : "";
+        const contactRegex = /^010-\d{4}-\d{4}$/;
+        if (!contactRegex.test(contactStr)) {
+            alert("연락처 형식이 올바르지 않습니다.\n(예: 010-1234-5678)");
+            return;
+        }
+
+        // 4. 비밀번호 검사
+        const pwStr = password ? String(password).trim() : "";
+        if (pwStr.length < 4 || pwStr.length > 6 || !/^[0-9]+$/.test(pwStr)) {
+            alert("비밀번호는 4~6자리 숫자로 입력해주세요.");
+            return;
+        }
+
+        // 5. 데이터 전송 Payload 생성
         const payload = {
             name: name,
-            field: parseInt(studentId, 10), 
+            field: parseInt(studentIdStr, 10), 
             department: major,
-            phone_number: contact,
+            phone_number: contactStr,
             part: selectedPart,
-            password: password || "1234", 
+            password: pwStr, 
             answers: questions.map((q) => ({
                 questionId: q.questionId,
-                answerText: form[q.questionId] || "" 
+                answerText: form[q.questionId] || ""
             }))
         };
-
-        console.log("최종 전송 데이터:", payload); 
 
         try {
             const response = await axios.post('https://api.sswulikelion.com/api/admissions', payload, {
