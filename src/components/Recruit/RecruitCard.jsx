@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import RecruitTop from './RecruitTop'
-import card from '../../assets/img/recruit/card.png'
+import card from '../../assets/img/recruit/card_2026.png'
 import useWindowSize from '../Section/useWindowSize';
 
 const RecruitCard = () => {
@@ -25,7 +25,7 @@ const RecruitCard = () => {
                         동아리입니다.<br /><br />
                         💡 지원 방법<br />하단 ‘지원하기’ 버튼 클릭<br /><br />
                         💡 모집 파트 및 대상<br />- 기획/디자인 & 프론트엔드 & 백엔드<br /><br />
-                        지원 기간<br />26.03.00 ~ 26.03.00 <br /><br /><br />
+                        지원 기간<br />26.02.18 ~ 26.02.26 <br /><br /><br />
                         많은 지원 부탁드리겠습니다~!<br />감사합니다
                     </div>
                 </div>
