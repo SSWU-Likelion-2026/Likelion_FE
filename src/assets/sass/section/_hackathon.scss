@@ -7,22 +7,6 @@
         flex-direction: column;
         align-items: center;
 
-        .tab_box {
-            order: 1;
-        }
-
-        h1 {
-            order: 2;
-        }
-
-        .month {
-            order: 3;
-        }
-
-        .retros {
-            order: 4;
-        }
-
         h1 {
             font-size: 30px;
             font-weight: 700;
@@ -39,7 +23,6 @@
             width: 593px;
             gap: 20px;
             margin-bottom: 20px;
-
 
             button {
                 width: 104px;
@@ -350,9 +333,7 @@
 
             .text_box {
                 margin-bottom: 40px;
-                .stack{
-                    margin-top: 20px;
-                }
+
                 .text {
                     display: flex;
                     
@@ -377,7 +358,7 @@
     .header {
 
         .tab_box {
-            margin-bottom: 100px;
+            margin-bottom: 20px;
         }
 
         .month {
@@ -386,7 +367,6 @@
             overflow-x: auto;
             gap: 40px;
             padding: 8px 0;
-            margin-top: -20px;
             scrollbar-width: none;
             -ms-overflow-style: none;
 
