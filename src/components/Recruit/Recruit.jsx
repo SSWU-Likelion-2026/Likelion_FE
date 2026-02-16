@@ -31,10 +31,10 @@ const Recruit = () => {
     const { start, end } = useMemo(() => {
         const today = new Date()
         const start = new Date(today)
-        start.setHours(16, 53, 0, 0)
+        start.setHours(17, 10, 0, 0)
 
         const end = new Date(today)
-        end.setHours(16, 55, 0, 0)
+        end.setHours(17, 12, 0, 0)
 
         return { start, end }
     }, [])
