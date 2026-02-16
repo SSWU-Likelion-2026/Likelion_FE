@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect, useState} from 'react'
+import React, { useMemo, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import RecruitTop from './RecruitTop'
 import apply_img from '../../assets/img/recruit/apply_2026.png'
@@ -26,23 +26,16 @@ const Recruit = () => {
         return () => clearInterval(id)
     }, [])
 
-
-    // 모집 일정 설정, 모집 열리는 일정과 마감일정을 설정.
+    // 모집 일정 설정
     const { start, end } = useMemo(() => {
-        const today = new Date()
-        const start = new Date(today)
-        start.setHours(17, 10, 0, 0)
+        const start = new Date('2026-02-18T00:00:00+09:00');
+        const end = new Date('2026-02-27T00:00:00+09:00');
 
-        const end = new Date(today)
-        end.setHours(17, 12, 0, 0)
+        return { start, end };
+    }, []);
 
-        return { start, end }
-    }, [])
-
-    const isOpen = now >= start && now < end
-    const isBefore = now < start
-
-
+    const isOpen = now >= start && now < end;
+    const isBefore = now < start;
     return (
         <div className={`recruit_home_div ${width > 1000 ? '' : 'container_m'}`} id='m_back'>
             <RecruitTop />
