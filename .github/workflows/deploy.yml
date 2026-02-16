@@ -1,22 +1,48 @@
 name: Deploy to S3
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    branches: [main]
+  push:
+    branches: [main]
 
+jobs:
+  ci:
+    name: CI (Build)
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      - name: Setup Node (with npm cache)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Build
+        run: CI=false npm run build
+
+  deploy:
+    name: CD (Deploy to S3 + Invalidate CloudFront)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup Node (with npm cache)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
 
       - name: Build
         run: CI=false npm run build
@@ -30,7 +56,6 @@ jobs:
 
       - name: S3 Sync
         run: aws s3 sync ./build s3://${{ secrets.AWS_S3_BUCKET }} --delete
-        
+
       - name: CloudFront Invalidation
-        if: github.event_name == 'push'
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
