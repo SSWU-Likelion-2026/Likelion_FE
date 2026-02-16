@@ -18,7 +18,7 @@ const RecruitCard = () => {
                 <div className="card_news_info_div">
                     <img src={card} alt="" />
                     <div className="card_info_text">
-                        🦁멋쟁이사자처럼 성신여대 13기🦁<br /><br />
+                        🦁멋쟁이사자처럼 성신여대 14기🦁<br /><br />
                         GROWL TO WORLD🔥<br /><br />
                         💡 멋쟁이사자처럼이란?<br />
                         멋쟁이사자처럼은 현재는 국내외 121개 대학, 4천여 명이 활동하는 국내 최대 규모의 IT 창업
