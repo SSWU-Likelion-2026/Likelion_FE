@@ -111,6 +111,7 @@
 @media (max-width: 1000px) {
   .result-form {
     background: linear-gradient(180deg, #020202 0%, #4E4D70 100%);
+
     .form-box {
       width: 340px;
       padding: 20px;
@@ -161,5 +162,29 @@
       font-size: 14px;
       border-radius: 10px;
     }
+  }
+}
+
+.result-closed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+
+
+  .closed-message {
+    background-color: var(--white);
+    padding: 50px 0;
+    border-radius: 20px;
+    margin: 46px 0;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 150%;
+    color: var(--pur02);
+
   }
 }

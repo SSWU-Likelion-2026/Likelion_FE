@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import axios from 'axios'; // API 연동용
 import RecruitTop from '../Recruit/RecruitTop';
 import useWindowSize from '../Section/useWindowSize';
+const kstDate = (isoWithoutTz) => new Date(`${isoWithoutTz}+09:00`)
+
+// 결과 조회 가능 시간
+const RESULT_WINDOWS = [
+  { start: kstDate('2026-03-03T18:00:00'), end: kstDate('2026-03-04T18:00:00') }, // 1차
+  { start: kstDate('2026-03-09T18:00:00'), end: kstDate('2026-03-10T18:00:00') }, // 최종
+]
+
+const isResultOpen = (now = new Date()) =>
+  RESULT_WINDOWS.some(w => now >= w.start && now < w.end)
+
 
 const ResultForm = () => {
   const { width } = useWindowSize();
-  
+
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const open = useMemo(() => isResultOpen(now), [now]);
+
   // 1. 입력값 상태 관리
   const [name, setName] = useState('');
   const [studentId, setStudentId] = useState('');
@@ -45,7 +64,7 @@ const ResultForm = () => {
     try {
       // 1단계: 최종(2차) 결과 먼저 조회
       const resSecond = await axios.post('https://api.sswulikelion.com/api/admissions/second', payload);
-      
+
       if (resSecond.data.isSuccess) {
         setResultData(resSecond.data.result);
         setResultType('second');
@@ -60,7 +79,7 @@ const ResultForm = () => {
     try {
       // 2단계: 1차 결과 조회
       const resFirst = await axios.post('https://api.sswulikelion.com/api/admissions/first', payload);
-      
+
       if (resFirst.data.isSuccess) {
         setResultData(resFirst.data.result);
         setResultType('first');
@@ -89,92 +108,107 @@ const ResultForm = () => {
 
   return (
     <>
-      <form className={`result-form ${width > 1000 ? '' : 'container_m'}`} onSubmit={handleSubmit}>
-        <RecruitTop isResultPage={true} />
-        <div className="form-box">
-          {/* 이름 입력 */}
-          <div className="form-group">
-            <label className="form-label">이름</label>
-            <input
-              type="text"
-              className="form-input"
-              placeholder="이름을 입력해주세요"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
+      {open ?
+        (
+          <>
+            <form className={`result-form ${width > 1000 ? '' : 'container_m'}`} onSubmit={handleSubmit}>
+              <RecruitTop isResultPage={true} />
+              <div className="form-box">
+                {/* 이름 입력 */}
+                <div className="form-group">
+                  <label className="form-label">이름</label>
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="이름을 입력해주세요"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
 
-          {/* 학번 입력 */}
-          <div className="form-group">
-            <label className="form-label">학번</label>
-            <input
-              type="text"
-              className="form-input"
-              placeholder="학번을 입력해주세요"
-              value={studentId}
-              onChange={(e) => setStudentId(e.target.value)}
-            />
-          </div>
+                {/* 학번 입력 */}
+                <div className="form-group">
+                  <label className="form-label">학번</label>
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="학번을 입력해주세요"
+                    value={studentId}
+                    onChange={(e) => setStudentId(e.target.value)}
+                  />
+                </div>
 
-          {/* 비밀번호 입력 */}
-          <div className="form-group">
-            <label className="form-label">비밀번호</label>
-            <input
-              type="password"
-              className="form-input"
-              placeholder="비밀번호(4~6자리)를 입력해주세요"
-              maxLength={6}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        </div>
-        <button type="submit" className="submit-button">조회</button>
-      </form>
+                {/* 비밀번호 입력 */}
+                <div className="form-group">
+                  <label className="form-label">비밀번호</label>
+                  <input
+                    type="password"
+                    className="form-input"
+                    placeholder="비밀번호(4~6자리)를 입력해주세요"
+                    maxLength={6}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              </div>
+              <button type="submit" className="submit-button">조회</button>
+            </form>
 
-      {showPopup && resultData && (
-        <>
-          <div className="popup-overlay" onClick={handleClosePopup}/>
-          <div className="popup">
-            <h2 className="popup-title">
-              {name}님 {isPass ? (resultType === 'first' ? "서류합격 축하합니다" : "최종 합격 축하합니다") : "아쉽지만 불합격입니다"}
-            </h2>
-            
-            {isPass ? (
-              <p className="popup-desc">
-                {resultType === 'first' ? (
-                  /* 1차 합격 시 (면접 안내) */
-                  <>
-                    면접 대기실: {resultData.waiting_room || "추후 안내"}<br />
-                    면접 장소: {resultData.location || "추후 안내"}<br />
-                    면접 일자: {date}<br />
-                    면접 시간: {time}
-                  </>
-                ) : (
-                  /* 최종 합격 시 (OT 안내) */
-                  <>
-                    아기사자가 되신 것을 환영합니다!<br /><br />
-                    [OT 안내]<br />
-                    OT 장소: {resultData.location || "추후 안내"}<br />
-                    OT 일자: {date}<br />
-                    OT 시간: {time}
-                  </>
-                )}
-              </p>
-            ) : (
-              /* 불합격 시 */
-              <p className="popup-desc">
-                지원해주셔서 감사합니다.<br/>
-                더 좋은 기회로 뵙기를 바랍니다.
-              </p>
+            {showPopup && resultData && (
+              <>
+                <div className="popup-overlay" onClick={handleClosePopup} />
+                <div className="popup">
+                  <h2 className="popup-title">
+                    {name}님 {isPass ? (resultType === 'first' ? "서류합격 축하합니다" : "최종 합격 축하합니다") : "아쉽지만 불합격입니다"}
+                  </h2>
+
+                  {isPass ? (
+                    <p className="popup-desc">
+                      {resultType === 'first' ? (
+                        /* 1차 합격 시 (면접 안내) */
+                        <>
+                          면접 대기실: {resultData.waiting_room || "추후 안내"}<br />
+                          면접 장소: {resultData.location || "추후 안내"}<br />
+                          면접 일자: {date}<br />
+                          면접 시간: {time}
+                        </>
+                      ) : (
+                        /* 최종 합격 시 (OT 안내) */
+                        <>
+                          아기사자가 되신 것을 환영합니다!<br /><br />
+                          [OT 안내]<br />
+                          OT 장소: {resultData.location || "추후 안내"}<br />
+                          OT 일자: {date}<br />
+                          OT 시간: {time}
+                        </>
+                      )}
+                    </p>
+                  ) : (
+                    /* 불합격 시 */
+                    <p className="popup-desc">
+                      지원해주셔서 감사합니다.<br />
+                      더 좋은 기회로 뵙기를 바랍니다.
+                    </p>
+                  )}
+
+                  <button className="popup-confirm" onClick={handleClosePopup}>확인</button>
+                </div>
+              </>
             )}
-            
-            <button className="popup-confirm" onClick={handleClosePopup}>확인</button>
+          </>
+        ) : (
+          <div className={`result-closed ${width > 1000 ? '' : 'container_m'}`}>
+            <RecruitTop isResultPage={true} />
+            <h2 className="closed-message">
+              결과 조회 기간이 아닙니다.<br />
+
+            </h2>
           </div>
-        </>
-      )}
+
+        )}
     </>
-  );
-};
+    );
+  }
+
 
 export default ResultForm;
