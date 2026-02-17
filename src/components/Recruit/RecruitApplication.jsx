@@ -12,7 +12,24 @@ const RecruitApplication = () => {
     const { name, studentId, major, contact, password, selectedPart } = location.state || {};
     const [questions, setQuestions] = useState([]);
     const textarea = useRef({});
-    const maxLength = 500;
+    const maxLength = 500; // 기본 최대 글자 수
+    const MAX_LENGTH_MAP = {
+        20: 100,
+        13: 300,
+        14: 300,
+        15: 300,
+        1: 500,
+        2: 500,
+        16: 500,
+        17: 500,
+        18: 500,
+        3: 400,
+        5: 400,
+        4: 600,
+        6: 700,
+    };
+
+    const DEFAULT_MAX_LENGTH = 500;
 
     const [showPopup, setShowPopup] = useState(false);
 
@@ -27,7 +44,7 @@ const RecruitApplication = () => {
 
     useEffect(() => {
         const fetchQuestionsAndInitForm = async () => {
-            console.log("현재 파트값:", selectedPart);
+            //console.log("현재 파트값:", selectedPart);
             if (!selectedPart) {
                 alert("잘못된 접근입니다. 파트를 선택해주세요.");
                 navigate(-1);
@@ -40,7 +57,7 @@ const RecruitApplication = () => {
                     headers: { 'Accept': 'application/json' },
                 });
 
-                console.log("서버 응답 데이터:", res.data);
+                //console.log("서버 응답 데이터:", res.data);
 
                 const fetchedQuestions = res.data.result || res.data;
                 setQuestions(fetchedQuestions);
@@ -62,6 +79,7 @@ const RecruitApplication = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         // name은 이제 questionId (숫자)일 수 있으므로 대괄호 접근
+        
         const trimmedValue = value.slice(0, maxLength);
 
         setForm(prev => ({ ...prev, [name]: trimmedValue }));
@@ -76,6 +94,7 @@ const RecruitApplication = () => {
 
     const renderTextarea = (question) => {
         const key = question.questionId; // 질문 ID를 고유 키로 사용
+        const maxLength = MAX_LENGTH_MAP[key] || DEFAULT_MAX_LENGTH;
         return (
             <div key={key} className="question_item">
                 <div className="info_title">
@@ -97,6 +116,7 @@ const RecruitApplication = () => {
             </div>
         );
     };
+
 
     const handleSubmit = async () => {
         // 1. 기본 정보 누락 검사
@@ -141,11 +161,11 @@ const RecruitApplication = () => {
         // 5. 데이터 전송 Payload 생성
         const payload = {
             name: name,
-            field: parseInt(studentIdStr, 10), 
+            field: parseInt(studentIdStr, 10),
             department: major,
             phone_number: contactStr,
             part: selectedPart,
-            password: pwStr, 
+            password: pwStr,
             answers: questions.map((q) => ({
                 questionId: q.questionId,
                 answerText: form[q.questionId] || ""
