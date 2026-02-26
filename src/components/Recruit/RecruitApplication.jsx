@@ -12,7 +12,7 @@ const RecruitApplication = () => {
     const { name, studentId, major, contact, password, selectedPart } = location.state || {};
     const [questions, setQuestions] = useState([]);
     const textarea = useRef({});
-    const maxLength = 500; // 기본 최대 글자 수
+
     const MAX_LENGTH_MAP = {
         20: 100,
         13: 300,
@@ -78,13 +78,12 @@ const RecruitApplication = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // name은 이제 questionId (숫자)일 수 있으므로 대괄호 접근
-        
-        const trimmedValue = value.slice(0, maxLength);
+        const qid = Number(name);
+        const limit = MAX_LENGTH_MAP[qid] || DEFAULT_MAX_LENGTH;
 
-        setForm(prev => ({ ...prev, [name]: trimmedValue }));
+        const trimmedValue = value.slice(0, limit);
+        setForm((prev) => ({ ...prev, [name]: trimmedValue }));
 
-        // 높이 자동 조절
         const ref = textarea.current[name];
         if (ref) {
             ref.style.height = 'auto';
