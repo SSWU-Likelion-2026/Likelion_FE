@@ -52,8 +52,8 @@ const RecruitInfo = () => {
 
     const part = [
         { value: '기획디자인', label: "기획/디자인" },
-        { value: '프론트엔드', label: "프론트엔드" },
-        { value: '백엔드', label: "백엔드" }
+        //{ value: '프론트엔드', label: "프론트엔드" },
+        //{ value: '백엔드', label: "백엔드" }
     ];
     const placeholder = '지원파트를 선택해주세요';
     const [name, setName] = useState('');

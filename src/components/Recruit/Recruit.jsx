@@ -28,8 +28,8 @@ const Recruit = () => {
 
     // 모집 일정 설정
     const { start, end } = useMemo(() => {
-        const start = new Date('2026-02-18T00:00:00+09:00');
-        const end = new Date('2026-02-27T00:00:00+09:00');
+        const start = new Date('2026-02-27T12:00:00+09:00'); 
+        const end = new Date('2026-03-03T00:00:00+09:00');   
 
         return { start, end };
     }, []);
@@ -68,7 +68,7 @@ const Recruit = () => {
                         </div>
                     </div>
                 )}
-                
+
 
                 <div className="div" id='done'>
                     <img src={done_apply_img} className='apply_img' />
